@@ -2,12 +2,13 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: Arial, sans-serif;
+    font-family: 'Poppins', sans-serif; /* Switch to Poppins */
 }
 
 body {
     line-height: 1.6;
     color: #333;
+    background: #f4f4f9; /* Light background for contrast */
 }
 
 /* Navbar */
@@ -15,39 +16,48 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1.2rem 3rem; /* Increased padding */
     background: #1e3a8a; /* Deep blue */
     color: white;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: background 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: rgba(30, 58, 138, 0.95); /* Transparent when scrolled */
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: bold;
+    font-size: 1.8rem;
+    font-weight: 700;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
     font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.3s ease, transform 0.2s ease;
 }
 
 .nav-links a:hover {
     color: #facc15; /* Gold */
+    transform: translateY(-2px); /* Subtle lift */
 }
 
 .menu-toggle {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
 }
 
@@ -59,146 +69,269 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    /* background: url('https://images.unsplash.com/photo-1505455184862-554165e5f6ba') no-repeat center/cover; */
-   background: url('/assets/hero-bg.jpg') no-repeat center/cover;
-    color: white;
+    background: url('/assets/hero-bg.jpg') no-repeat center/cover;
+    position: relative;
     padding: 2rem;
 }
 
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}
+
 .hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    animation: fadeInDown 1s ease;
 }
 
 .hero p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 300;
     margin-bottom: 2rem;
+    animation: fadeInUp 1s ease 0.2s;
 }
 
 .cta-button {
     background: #facc15;
     color: #1e3a8a;
-    padding: 0.8rem 1.5rem;
+    padding: 1rem 2rem;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
+    border-radius: 50px; /* Rounded button */
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    animation: fadeInUp 1s ease 0.4s;
 }
 
 .cta-button:hover {
     background: #eab308;
+    transform: translateY(-3px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 /* About Section */
 .about {
-    padding: 4rem 2rem;
+    padding: 5rem 3rem; /* Increased padding */
     text-align: center;
-    background: #f9f9f9;
+    background: #fff; /* White background */
 }
 
 .about h2 {
-    font-size: 2.5rem;
+    font-size: 2.8rem;
+    font-weight: 600;
     margin-bottom: 2rem;
+    color: #1e3a8a;
 }
 
 .about-container {
-    max-width: 800px;
+    max-width: 900px; /* Wider container */
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 2.5rem;
 }
 
 .about-section {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    background: #f9f9f9;
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-section:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .about-section h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    margin-bottom: 1.2rem;
     color: #1e3a8a;
 }
 
 .about-section p {
     margin-bottom: 1rem;
+    font-weight: 300;
 }
 
 /* Services Section */
 .services {
-    padding: 4rem 2rem;
+    padding: 5rem 3rem;
     text-align: center;
+    background: #f4f4f9;
 }
 
 .services h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: #1e3a8a;
 }
 
 .service-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .service-card {
     background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .service-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
     margin-bottom: 1rem;
+    color: #1e3a8a;
+}
+
+.service-card p {
+    font-weight: 300;
 }
 
 /* Events Section */
 .events {
-    padding: 4rem 2rem;
-    background: #f9f9f9;
+    padding: 5rem 3rem;
     text-align: center;
+    background: #fff;
 }
 
 .events h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: #1e3a8a;
 }
 
 .event-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .event-card {
     background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.event-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .event-card h3 {
-    font-size: 1.5rem;
+    font-size: 1.6rem;
+    font-weight: 600;
     margin-bottom: 1rem;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+.event-card p {
+    font-weight: 300;
+    color: white;
+    position: relative;
+    z-index: 2;
+}
+
+/* Prayer Conference Background */
+.prayer-conference {
+    background: url('/assets/prayer-conference.jpg') no-repeat center/cover;
+    position: relative;
+}
+
+.prayer-conference::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: 1;
+}
+
+/* Youth Retreat Background */
+.youth-retreat {
+    background: url('/assets/youth-retreat.jpg') no-repeat center/cover;
+    position: relative;
+}
+
+.youth-retreat::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+    z-index: 1;
 }
 
 /* Contact Section */
 .contact {
-    padding: 4rem 2rem;
+    padding: 5rem 3rem;
     text-align: center;
+    background: #f4f4f9;
 }
 
 .contact h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: #1e3a8a;
 }
 
 .contact-container {
     display: flex;
     justify-content: center;
-    gap: 2rem;
+    gap: 2.5rem;
     max-width: 1200px;
     margin: 0 auto;
     flex-wrap: wrap;
@@ -206,87 +339,116 @@ body {
 
 .contact-form, .contact-details {
     flex: 1;
-    min-width: 300px;
+    min-width: 320px;
     background: white;
-    padding: 1.5rem;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.contact-form:hover, .contact-details:hover {
+    transform: translateY(-5px);
 }
 
 .contact-form h3, .contact-details h3 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 1.2rem;
+    color: #1e3a8a;
 }
 
 #contact-form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 #contact-form input,
 #contact-form textarea {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 1rem;
+    font-weight: 300;
+    transition: border-color 0.3s ease;
+}
+
+#contact-form input:focus,
+#contact-form textarea:focus {
+    border-color: #1e3a8a;
+    outline: none;
 }
 
 #contact-form textarea {
     resize: vertical;
-    min-height: 100px;
+    min-height: 120px;
 }
 
 #contact-form button {
     background: #1e3a8a;
     color: white;
-    padding: 0.8rem;
+    padding: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 #contact-form button:hover {
     background: #facc15;
     color: #1e3a8a;
+    transform: translateY(-2px);
 }
 
 .contact-details p {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
+    font-weight: 300;
 }
 
 .map-container {
-    margin-top: 1rem;
+    margin-top: 1.5rem;
 }
 
 /* Gallery Section */
 .gallery {
-    padding: 4rem 2rem;
+    padding: 5rem 3rem;
     text-align: center;
-    background: #f9f9f9;
+    background: #fff;
 }
 
 .gallery h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: #1e3a8a;
 }
 
 .gallery-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: scale(1.05);
 }
 
 .gallery-item img {
     width: 100%;
-    height: 200px;
+    height: 220px;
     object-fit: cover;
     transition: transform 0.3s ease;
 }
@@ -302,50 +464,66 @@ body {
     right: 0;
     background: rgba(0, 0, 0, 0.7);
     color: white;
-    padding: 0.5rem;
+    padding: 0.8rem;
     margin: 0;
-    font-size: 0.9rem;
+    font-size: 1rem;
+    font-weight: 300;
 }
 
 /* Donation Section */
 .donation {
-    padding: 4rem 2rem;
+    padding: 5rem 3rem;
     text-align: center;
+    background: #f4f4f9;
 }
 
 .donation h2 {
-    font-size: 2.5rem;
-    margin-bottom: 2rem;
+    font-size: 2.8rem;
+    font-weight: 600;
+    margin-bottom: 2.5rem;
+    color: #1e3a8a;
 }
 
 #donation-form {
-    max-width: 600px;
+    max-width: 700px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 1.2rem;
 }
 
 #donation-form input,
 #donation-form select {
-    padding: 0.8rem;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
     font-size: 1rem;
+    font-weight: 300;
+    transition: border-color 0.3s ease;
+}
+
+#donation-form input:focus,
+#donation-form select:focus {
+    border-color: #1e3a8a;
+    outline: none;
 }
 
 #donation-form button {
     background: #1e3a8a;
     color: white;
-    padding: 0.8rem;
+    padding: 1rem;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 #donation-form button:hover {
     background: #facc15;
     color: #1e3a8a;
+    transform: translateY(-2px);
 }
 
 /* Footer */
@@ -353,20 +531,26 @@ footer {
     background: #1e3a8a;
     color: white;
     text-align: center;
-    padding: 1rem;
+    padding: 2rem;
+    font-weight: 300;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar {
+        padding: 1rem 2rem;
+    }
+
     .nav-links {
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 60px;
+        top: 70px;
         left: 0;
         width: 100%;
         background: #1e3a8a;
-        padding: 1rem;
+        padding: 1.5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
     .nav-links.active {
@@ -378,6 +562,41 @@ footer {
     }
 
     .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero p {
+        font-size: 1.1rem;
+    }
+
+    .hero {
+        padding: 1.5rem;
+    }
+
+    .about, .services, .events, .contact, .gallery, .donation {
+        padding: 3rem 1.5rem;
+    }
+
+    .contact-container {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .service-grid, .event-grid, .gallery-grid {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .navbar {
+        padding: 1rem 1.5rem;
+    }
+
+    .logo {
+        font-size: 1.5rem;
+    }
+
+    .hero h1 {
         font-size: 2rem;
     }
 
@@ -385,30 +604,20 @@ footer {
         font-size: 1rem;
     }
 
-    .about, .services, .events, .contact, .gallery, .donation {
-        padding: 2rem 1rem;
-    }
-
-    .contact-container {
-        flex-direction: column;
-        gap: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .hero h1 {
-        font-size: 1.5rem;
-    }
-
     .cta-button {
-        padding: 0.6rem 1rem;
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
     }
 
     .service-card, .event-card, .gallery-item {
-        padding: 1rem;
+        padding: 1.5rem;
     }
 
     .gallery-item img {
-        height: 150px;
+        height: 180px;
+    }
+
+    .about h2, .services h2, .events h2, .contact h2, .gallery h2, .donation h2 {
+        font-size: 2.2rem;
     }
 }
